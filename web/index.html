@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>C-chan</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preload" href="/vrm/cchan.vrm" as="fetch" crossorigin>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+        "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.4.0/lib/three-vrm.module.js",
+        "@pixiv/three-vrm-animation": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm-animation@3.4.0/lib/three-vrm-animation.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="ai-page">
+    <canvas id="vrm-canvas" aria-label="C-chan"></canvas>
+
+    <header class="topbar">
+      <div class="identity" aria-label="C-chan">
+        <div class="identity-mark">C</div>
+        <div class="identity-copy">
+          <strong>C-chan</strong>
+          <span>lagi di sini</span>
+        </div>
+      </div>
+
+      <div class="status" aria-live="polite">
+        <i class="status-dot"></i>
+        <span id="status-text">loading...</span>
+      </div>
+    </header>
+
+    <button
+      id="free-camera-toggle"
+      class="free-camera-toggle"
+      type="button"
+      aria-label="Free camera"
+      aria-pressed="false"
+      title="Free camera"
+    ><svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8.4 5.5h2l1.2-1.6h3l1.2 1.6h1.8a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2H6.4a2 2 0 0 1-2-2V7.5a2 2 0 0 1 2-2h2z"/>
+        <circle cx="12" cy="11.7" r="3.1"/>
+      </svg></button>
+
+    <div id="subtitle" class="subtitle" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="chat-hint" aria-hidden="true">
+      <span>ngobrol aja</span>
+      <kbd>↵</kbd>
+    </div>
+
+    <form id="chat-form" class="floating-chat">
+      <textarea
+        id="message"
+        rows="1"
+        maxlength="2000"
+        placeholder="ngobrol..."
+        autocomplete="off"
+        aria-label="Pesan untuk C-chan"
+      ></textarea>
+      <button id="send" type="submit" aria-label="Kirim">↑</button>
+    </form>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
